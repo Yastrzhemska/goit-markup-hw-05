@@ -12,7 +12,7 @@
     --color-grad: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7));
     --color-icon: #8E8F99;
     --transition-duration: 250ms;
-    --transition-funct: ubic-bezier(0.4, 0, 0.2, 1);
+    --transition-funct: cubic-bezier(0.4, 0, 0.2, 1);
     
 
 }
@@ -97,6 +97,14 @@ img {
     position: relative;
 
     transition: color var(--transition-duration) var(--transition-funct);
+}
+
+.current-studio {
+    color: var(--accent-color);
+}
+
+.current-portfolio {
+    color: var(--accent-color);
 }
 
 .current-studio::after {
@@ -421,7 +429,7 @@ img {
     border-radius: 4px;
     color: var(--color-icon);
 
-    transition: border-color var(--transition-duration) var(--transition-funct)), color var(--transition-duration) var(--transition-funct);
+    transition: border-color var(--transition-duration) var(--transition-funct), color var(--transition-duration) var(--transition-funct);
 }
 
 .customers-list-icon {
@@ -627,15 +635,11 @@ img {
     color: var(--color-studiofooter-btnprof);
     background-color: var(--logo-color-first);
 
-    padding-top: 40px;
-    padding-left: 32px; 
-    padding-right: 32px;
-    padding-bottom: 164px;
+    padding: 40px 32px 0 32px; 
     width: 100%;
     height: 100%;
-    overflow: auto;
-    transform: translate(0, 100%);
-    transition:transform 500ms linear ;
+    transform: translate(0, 101%);
+    transition:transform 250ms linear ;
 
     position: absolute;
     top: 0;
@@ -653,21 +657,12 @@ img {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
 
     width: 100%;
     height: 100%;
     background-color: rgba(46, 47, 66, 0.4);;
 
-    transition: opacity var(--transition-duration) var(--transition-funct), visibility var(--transition-duration) var(--transition-funct) ;
-
-    /* transition-property: opacity;
-    transition-duration: var(--transition-duration);
-    transition-timing-function: var(--transition-funct);
-
-    transition-property: visibility;
-    transition-duration: var(--transition-duration);
-    transition-timing-function: var(--transition-funct); */
+    transition: opacity var(--transition-duration) var(--transition-funct), visibility var(--transition-duration) var(--transition-funct);
 }
 
 .backdrop.is-hidden {
@@ -686,8 +681,12 @@ img {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform var(--transition-duration) var(--transition-funct);
+}
 
+.backdrop.is-hidden .modal {
+    transform: translate (-50%, -50%) scale(0);
 }
 
 .modal-close-btn {
@@ -697,20 +696,21 @@ img {
     background-color: var(--text-footer);
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 0;
+    cursor: pointer;
 
     display: flex;
     justify-content: center;
     align-items: center;
     
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 24px;
+    right: 24px;
 
     transition: background-color var(--transition-duration) var(--transition-funct);
 }
 
 .icon-modal-close {
-    transition: fill var(--transition-duration) var(--transition-funct);
+    transition: fill var(--transition-duration) var(--transition-funct) ;
 }
 
 .modal-close-btn:hover,
